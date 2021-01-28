@@ -24,7 +24,7 @@ dependencies {
     implementation(npm("styled-components", "~5.1.1"))
     implementation(npm("inline-style-prefixer", "~6.0.0"))
 
-    implementation(npm("react-select", "4.0.2"))
+//    implementation(npm("react-select", "4.0.2"))
 }
 
 kotlin {

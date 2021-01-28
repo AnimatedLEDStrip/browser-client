@@ -1,0 +1,27 @@
+---
+language: java
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+stages:
+  - name: deploy
+#    if: tag IS present
+
+jobs:
+  include:
+    - stage: deploy
+      install: ./gradlew browserDistribution
+      script: ls build/distributions
+#      deploy:
+#        - provider: pages
+#          skip_cleanup: true
+#          github_token: $GITHUB_TOKEN
+#          keep_history: true
+#          verbose: true
+#          local_dir: ./dokka
