@@ -1,9 +1,14 @@
 package animatedledstrip.browsercontrol.start
 
 import animatedledstrip.animations.*
+import animatedledstrip.animations.parameters.AbsoluteDistance
+import animatedledstrip.animations.parameters.DegreesRotation
+import animatedledstrip.animations.parameters.PercentDistance
+import animatedledstrip.animations.parameters.RadiansRotation
 import animatedledstrip.browsercontrol.Styles
 import animatedledstrip.browsercontrol.toCSS
 import animatedledstrip.colors.ColorContainer
+import animatedledstrip.colors.ccpresets.Black
 import animatedledstrip.leds.animationmanagement.*
 import animatedledstrip.leds.locationmanagement.Location
 import kotlinx.browser.document
@@ -33,7 +38,7 @@ class StartAnimationComponent : RComponent<StartAnimationProps, StartAnimationSt
         }
     }
 
-    fun RBuilder.addColorParams(colors: List<ColorContainer>, addColorSupported: Boolean) {
+    private fun RBuilder.addColorParams(colors: List<ColorContainer>, addColorSupported: Boolean) {
         styledDiv {
             css {
                 +Styles.columnFlexStyle
@@ -41,7 +46,13 @@ class StartAnimationComponent : RComponent<StartAnimationProps, StartAnimationSt
             colors.forEachIndexed { ccIndex, cc ->
                 styledDiv {
                     css {
-                        +Styles.rowFlexStyle
+                        +Styles.paramStyle
+                    }
+                    styledLabel {
+                        css {
+                            +Styles.paramLabelStyle
+                        }
+                        +"Color $ccIndex"
                     }
                     for ((colIndex, color) in cc.colors.withIndex())
                         input {
@@ -71,7 +82,18 @@ class StartAnimationComponent : RComponent<StartAnimationProps, StartAnimationSt
                         +"+"
                     }
                 }
-
+            }
+            if (addColorSupported) {
+                button {
+                    attrs {
+                        onClickFunction = {
+                            setState {
+                                colorsPerColor?.add(ColorContainer.Black)
+                            }
+                        }
+                    }
+                    +"Add Color"
+                }
             }
         }
 
@@ -105,7 +127,7 @@ class StartAnimationComponent : RComponent<StartAnimationProps, StartAnimationSt
                                     setState {
                                         selectedAnim = animInfo
                                         colorsPerColor = mutableListOf<ColorContainer>().apply {
-                                            for(i in 0 until animInfo.minimumColors) add(ColorContainer(0))
+                                            for(i in 0 until animInfo.minimumColors) add(ColorContainer.Black)
                                         }
                                     }
                                 }

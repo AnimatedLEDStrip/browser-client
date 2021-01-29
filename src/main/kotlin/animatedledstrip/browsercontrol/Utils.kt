@@ -14,8 +14,13 @@ import animatedledstrip.colors.r
 import react.RBuilder
 import react.ReactElement
 
-fun RBuilder.connect(handler:  ConnectProps.() -> Unit): ReactElement =
+fun RBuilder.connect(handler: ConnectProps.() -> Unit): ReactElement =
     child(ConnectComponent::class) {
+        this.attrs(handler)
+    }
+
+fun RBuilder.control(handler: ControlProps.() -> Unit): ReactElement =
+    child(ControlComponent::class) {
         this.attrs(handler)
     }
 

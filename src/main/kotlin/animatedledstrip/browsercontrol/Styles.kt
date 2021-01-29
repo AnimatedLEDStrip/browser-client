@@ -62,6 +62,7 @@ object Styles : StyleSheet("ALSStyles", isStatic = true) {
     val paramStyle by css {
         +rowFlexStyle
         +topMarginStyle
+        alignItems = Align.center
     }
 
     val rightMarginStyle by css {

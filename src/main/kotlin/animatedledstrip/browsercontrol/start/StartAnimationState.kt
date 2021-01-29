@@ -7,5 +7,5 @@ import react.RState
 external interface StartAnimationState : RState {
     var supportedAnimations: List<String>?
     var selectedAnim: Animation.AnimationInfo?
-    var colorsPerColor: List<ColorContainer>?
+    var colorsPerColor: MutableList<ColorContainer>?
 }

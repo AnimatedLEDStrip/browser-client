@@ -1,7 +1,8 @@
-package animatedledstrip.browsercontrol.stripinfo
+package animatedledstrip.browsercontrol
+
 import animatedledstrip.client.ALSHttpClient
 import react.RProps
 
-external interface StripInfoProps : RProps {
+external interface ControlProps : RProps {
     var alsClient: ALSHttpClient<*>
 }

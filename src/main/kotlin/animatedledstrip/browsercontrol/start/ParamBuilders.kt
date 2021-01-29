@@ -1,13 +1,13 @@
 package animatedledstrip.browsercontrol.start
 
-import animatedledstrip.animations.*
+import animatedledstrip.animations.AnimationParameter
+import animatedledstrip.animations.parameters.*
 import animatedledstrip.browsercontrol.Styles
 import animatedledstrip.leds.locationmanagement.Location
 import kotlinx.html.InputType
 import kotlinx.html.id
 import react.RBuilder
 import react.dom.defaultValue
-import react.dom.textArea
 import styled.css
 import styled.styledDiv
 import styled.styledInput
@@ -23,11 +23,11 @@ fun RBuilder.addBasicParams(paramList: List<AnimationParameter<*>>?) {
             styledLabel {
                 css {
                     +Styles.paramLabelStyle
-                    hover {
-                        textArea {
-                            
-                        }
-                    }
+//                    hover {
+//                        textArea {
+//
+//                        }
+//                    }
                 }
                 attrs {
 

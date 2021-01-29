@@ -6,8 +6,6 @@ import react.RBuilder
 import react.RComponent
 import react.RProps
 import react.setState
-import styled.css
-import styled.styledDiv
 
 class App : RComponent<RProps, AppState>() {
     override fun RBuilder.render() {
@@ -20,33 +18,9 @@ class App : RComponent<RProps, AppState>() {
                 }
             }
         } else {
-            styledDiv {
-                css {
-                    +Styles.rowFlexStyle
-                    +Styles.fontStyle
-                }
-                styledDiv {
-                    css {
-                        +Styles.pageHalfStyle
-                    }
-                    startAnimation {
-                        alsClient = state.alsClient!!
-                    }
-                }
-                styledDiv {
-                    css {
-                        +Styles.pageHalfStyle
-                    }
-                    stripInfo {
-                        alsClient = state.alsClient!!
-                    }
-                    runningAnimationsList {
-                        alsClient = state.alsClient!!
-                    }
-                }
+            control {
+                alsClient = state.alsClient!!
             }
         }
-
     }
-
 }
